@@ -19,17 +19,18 @@ const App = () => {
     e.preventDefault();
     let errors = signUpFormValidation(data);
     const obj = { ...dispE };   
-    if (errors["name"]) {     
+    if (errors && errors["name"]) {     
       obj["name"] = "block";
     }
-    if (errors["email"]) {
+    if (errors && errors["email"]) {
       obj["email"] = "block";     
     }
-    if (errors["password"]) {
+    if (errors && errors["password"]) {
       obj["password"] = "block";     
     }
     setDisp(obj);
     setErrors(errors);
+    
     console.log("display", dispE);
   }
 
@@ -45,7 +46,7 @@ const App = () => {
           setData(list);
         }}
       ></input>
-      <span style={{ display: dispE["name"] }}>{error["name"]}</span>
+      <span style={{ display: dispE["name"] }}>{(error)?error["name"]:""}</span>
       <label htmlFor="email">Email</label>
       <input
         type="text"
@@ -56,7 +57,7 @@ const App = () => {
           setData(list);
         }}
       ></input>
-      <span style={{ display: dispE["email"] }}>{error["email"]}</span>
+      <span style={{ display: dispE["email"] }}>{(error)?error["email"]:""}</span>
       <label htmlFor="password">Password</label>
       <input
         type="text"
@@ -67,7 +68,7 @@ const App = () => {
           setData(list);
         }}
       ></input>
-      <span style={{ display: dispE["password"] }}>{error["password"]}</span>
+      <span style={{ display: dispE["password"] }}>{(error)?error["password"]:""}</span>
       <label htmlFor="consent">Consent</label>
       <input type="checkbox" id="consent"></input>
       <button type="submit" onClick={submitHandler}>
