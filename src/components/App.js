@@ -41,7 +41,7 @@ const App = () => {
       ></input>
       <label htmlFor="consent">Consent</label>
       <input type="checkbox" id="consent"></input>
-      <button>Signup</button>
+      <button type="submit">Signup</button>
     </form>
   );
 };
